@@ -405,17 +405,28 @@ abstract class AbstractStoreQuery<R extends Record> extends AbstractQuery implem
                 xxxx xxxx
                 xx [/pro] */
 
-                // Firebird and Postgres can execute the INSERT .. RETURNING
-                // clause like a select clause. JDBC support is not implemented
-                // in the Postgres JDBC driver
-                case FIREBIRD:
-                case POSTGRES: {
+                // Firebird can execute the INSERT .. RETURNING clause like a select clause.
+                case FIREBIRD: {
                     listener.executeStart(ctx);
                     rs = ctx.statement().executeQuery();
                     listener.executeEnd(ctx);
                     break;
                 }
-
+                // Postgres can execute the INSERT .. RETURNING
+                // JDBC support is not implementedthe Postgres JDBC driver
+                case POSTGRES: {
+                    listener.executeStart(ctx);
+                    final boolean isResultSet = ctx.statement().execute();
+                    if (isResultSet) {
+                        rs = ctx.statement().getResultSet();
+                        result = rs.isBeforeFirst() ? 1 : 0;
+                    } else {
+                        rs = null;
+                        result = ctx.statement().getUpdateCount();
+                    }
+                    listener.executeEnd(ctx);
+                    break;
+                }
                 // These dialects have full JDBC support
                 /* [pro] xx
                 xxxx xxxxxxx
