@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.jooq</groupId>
         <artifactId>jooq-parent</artifactId>
-        <version>3.5.2</version>
+        <version>3.5.1002</version>
     </parent>
 
     <groupId>org.jooq</groupId>
@@ -42,7 +41,7 @@
                     <driver>org.h2.Driver</driver>
                     <url>jdbc:h2:~/scala-test</url>
                     <username>sa</username>
-                    <password></password>
+                    <password />
                     <!--all executions are ignored if -Dmaven.test.skip=true -->
                     <skip>${maven.test.skip}</skip>
                 </configuration>
@@ -68,7 +67,7 @@
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
-                <version>3.5.2</version>
+                <version>3.5.1002</version>
                 <executions>
                     <execution>
                         <id>exec1</id>
@@ -81,14 +80,14 @@
                                 <driver>org.h2.Driver</driver>
                                 <url>jdbc:h2:~/scala-test</url>
                                 <user>sa</user>
-                                <password></password>
+                                <password />
                             </jdbc>
                             <generator>
                                 <name>org.jooq.util.DefaultGenerator</name>
                                 <database>
                                     <name>org.jooq.util.h2.H2Database</name>
                                     <includes>.*</includes>
-                                    <excludes></excludes>
+                                    <excludes />
                                     <dateAsTimestamp>true</dateAsTimestamp>
                                     <inputSchema>PUBLIC</inputSchema>
                                 </database>
