@@ -43,9 +43,9 @@
     </properties>
 
     <scm>
-        <developerConnection>scm:git:ssh://git@github.com:igor-kovalchuk/jOOQ.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:igor-kovalchuk/jOOQ.git</developerConnection>
         <url>http://github.com/igor-kovalchuk/jOOQ.git</url>
-        <connection>https://github.com/igor-kovalchuk/jOOQ.git</connection>
+        <connection>scm:git:git@github.com:igor-kovalchuk/jOOQ.git</connection>
     </scm>
 
     <issueManagement>
